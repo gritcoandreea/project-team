@@ -1,13 +1,13 @@
 package ro.project.team.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.project.team.domain.Team;
 import ro.project.team.dto.TeamDto;
 import ro.project.team.exception.DtoException;
 import ro.project.team.exception.EntityNotFoundException;
+import ro.project.team.exception.ServiceException;
 import ro.project.team.respository.TeamRepository;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class TeamService {
      * @throws DtoException
      * @throws EntityNotFoundException
      */
-    public TeamDto getTeamById(long id) throws DtoException, EntityNotFoundException {
+    public TeamDto getTeamById(long id) throws DtoException, EntityNotFoundException, ServiceException {
         try {
             Team team = teamRepository.findById(id).orElse(null);
             if (team != null) {
@@ -64,7 +64,7 @@ public class TeamService {
     }
 
 
-    public Team saveTeam(Team team) {
+    public Team saveTeam(Team team) throws ServiceException {
         try {
             return teamRepository.save(team);
         } catch (RuntimeException exception) {

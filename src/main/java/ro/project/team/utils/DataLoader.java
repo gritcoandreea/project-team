@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import ro.project.team.domain.Captain;
 import ro.project.team.domain.Robot;
 import ro.project.team.domain.Team;
+import ro.project.team.exception.ServiceException;
 import ro.project.team.service.CaptainService;
 import ro.project.team.service.RobotService;
 import ro.project.team.service.TeamService;
@@ -33,7 +34,7 @@ public class DataLoader implements CommandLineRunner {
         log.info("Data persisted successfully in H2 db.");
     }
 
-    private List<Team> getTeams() {
+    private List<Team> getTeams() throws ServiceException {
         List<Team> teams = new ArrayList<>();
         teams.add(teamService.saveTeam(Team.builder().name("Team1").build()));
         teams.add(teamService.saveTeam(Team.builder().name("Team2").build()));

@@ -35,7 +35,7 @@ public class TeamController {
     }
 
     @GetMapping("/teams")
-    public Map<String, List<TeamDto>> teams() {
+    public Map<String, List<TeamDto>> teams() throws ServiceException {
         log.debug("Entered get teams endpoint.");
         Map<String, List<TeamDto>> response = new HashMap<>();
         response.put("teams", teamService.getTeams());
@@ -43,7 +43,7 @@ public class TeamController {
     }
 
     @RequestMapping(value = "/team", method = RequestMethod.GET)
-    public TeamDto teamById(@RequestParam("id") long teamId) throws DtoException, EntityNotFoundException {
+    public TeamDto teamById(@RequestParam("id") long teamId) throws DtoException, EntityNotFoundException, ServiceException {
         log.debug("Entered get team by id endpoint.");
         return teamService.getTeamById(teamId);
     }
