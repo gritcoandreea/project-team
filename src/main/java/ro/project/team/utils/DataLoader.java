@@ -13,6 +13,9 @@ import ro.project.team.service.TeamService;
 
 import java.util.*;
 
+/**
+ * Utility class to add data in H2 database.
+ */
 @Component
 @Slf4j
 public class DataLoader implements CommandLineRunner {
@@ -22,8 +25,8 @@ public class DataLoader implements CommandLineRunner {
     private RobotService robotService;
 
     @Override
-    public void run(String... args) throws Exception {
-        log.info("Loading data");
+    public void run(String... args) {
+        log.info("Loading data starting...");
         List<Team> teams = getTeams();
         createCaptains(teams);
         createRobots(teams);

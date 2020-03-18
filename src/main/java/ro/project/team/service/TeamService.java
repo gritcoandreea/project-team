@@ -21,6 +21,12 @@ public class TeamService {
 
     private TeamRepository teamRepository;
 
+    /**
+     * Get all teams or empty list.
+     *
+     * @return List<TeamDto>
+     * @throws ServiceException
+     */
     public List<TeamDto> getTeams() throws ServiceException {
         try {
             List<Team> teams = teamRepository.findAll();
@@ -36,6 +42,14 @@ public class TeamService {
         }
     }
 
+    /**
+     * Get a team by id or error if team does not exist.
+     *
+     * @param id - long
+     * @return TeamDto
+     * @throws DtoException
+     * @throws EntityNotFoundException
+     */
     public TeamDto getTeamById(long id) throws DtoException, EntityNotFoundException {
         try {
             Team team = teamRepository.findById(id).orElse(null);
