@@ -13,7 +13,7 @@ import ro.project.team.respository.TeamRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ro.project.team.utils.DtoConverter.TEAM_DTO_TRANSFORMER;
+import static ro.project.team.utils.DtoConverter.TEAM_DTO_CONVERTER;
 
 @Service
 @Slf4j
@@ -32,7 +32,7 @@ public class TeamService {
             List<Team> teams = teamRepository.findAll();
             return teams.stream().map(team -> {
                 try {
-                    return TEAM_DTO_TRANSFORMER.convertToDto(team);
+                    return TEAM_DTO_CONVERTER.convertToDto(team);
                 } catch (DtoException e) {
                     return null;
                 }
@@ -54,11 +54,11 @@ public class TeamService {
         try {
             Team team = teamRepository.findById(id).orElse(null);
             if (team != null) {
-                return TEAM_DTO_TRANSFORMER.convertToDto(team);
+                return TEAM_DTO_CONVERTER.convertToDto(team);
             } else {
                 throw new EntityNotFoundException("Entity with id " + id + " not found!");
             }
-        } catch (RuntimeException exception) {
+        } catch (Exception exception) {
             throw new ServiceException("Error when retrieving team with id " + id, exception);
         }
     }

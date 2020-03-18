@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public interface DtoConverter<P, D> {
     D convertToDto(P pojo) throws DtoException;
 
-    TeamDtoConverter TEAM_DTO_TRANSFORMER = new TeamDtoConverter();
+    TeamDtoConverter TEAM_DTO_CONVERTER = new TeamDtoConverter();
 
 
     class TeamDtoConverter implements DtoConverter<Team, TeamDto> {
