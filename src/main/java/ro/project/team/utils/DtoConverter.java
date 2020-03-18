@@ -7,13 +7,13 @@ import ro.project.team.exception.DtoException;
 
 import java.util.stream.Collectors;
 
-public interface DtoTransformer<P, D> {
+public interface DtoConverter<P, D> {
     D transformToDto(P pojo) throws DtoException;
 
-    TeamDtoTransformer TEAM_DTO_TRANSFORMER = new TeamDtoTransformer();
+    TeamDtoConverter TEAM_DTO_TRANSFORMER = new TeamDtoConverter();
 
 
-    class TeamDtoTransformer implements DtoTransformer<Team, TeamDto> {
+    class TeamDtoConverter implements DtoConverter<Team, TeamDto> {
 
         @Override
         public TeamDto transformToDto(Team pojo) throws DtoException {

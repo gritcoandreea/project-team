@@ -13,7 +13,7 @@ import ro.project.team.respository.TeamRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ro.project.team.utils.DtoTransformer.TEAM_DTO_TRANSFORMER;
+import static ro.project.team.utils.DtoConverter.TEAM_DTO_TRANSFORMER;
 
 @Service
 @Slf4j

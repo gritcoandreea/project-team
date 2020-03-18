@@ -26,7 +26,7 @@ public class DataLoader implements CommandLineRunner {
     private RobotService robotService;
 
     @Override
-    public void run(String... args) {
+    public void run(String... args) throws ServiceException {
         log.info("Loading data starting...");
         List<Team> teams = getTeams();
         createCaptains(teams);
