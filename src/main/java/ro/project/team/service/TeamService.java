@@ -32,7 +32,7 @@ public class TeamService {
             List<Team> teams = teamRepository.findAll();
             return teams.stream().map(team -> {
                 try {
-                    return TEAM_DTO_TRANSFORMER.transformToDto(team);
+                    return TEAM_DTO_TRANSFORMER.convertToDto(team);
                 } catch (DtoException e) {
                     return null;
                 }
@@ -54,7 +54,7 @@ public class TeamService {
         try {
             Team team = teamRepository.findById(id).orElse(null);
             if (team != null) {
-                return TEAM_DTO_TRANSFORMER.transformToDto(team);
+                return TEAM_DTO_TRANSFORMER.convertToDto(team);
             } else {
                 throw new EntityNotFoundException("Entity with id " + id + " not found!");
             }

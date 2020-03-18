@@ -8,7 +8,7 @@ import ro.project.team.exception.DtoException;
 import java.util.stream.Collectors;
 
 public interface DtoConverter<P, D> {
-    D transformToDto(P pojo) throws DtoException;
+    D convertToDto(P pojo) throws DtoException;
 
     TeamDtoConverter TEAM_DTO_TRANSFORMER = new TeamDtoConverter();
 
@@ -16,7 +16,7 @@ public interface DtoConverter<P, D> {
     class TeamDtoConverter implements DtoConverter<Team, TeamDto> {
 
         @Override
-        public TeamDto transformToDto(Team pojo) throws DtoException {
+        public TeamDto convertToDto(Team pojo) throws DtoException {
             if (pojo != null) {
                 TeamDto teamDto = new TeamDto();
                 teamDto.setId(pojo.getId());
